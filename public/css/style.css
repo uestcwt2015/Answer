@@ -20,7 +20,7 @@ body {
 	animation-fill-mode: forwards;
 }
 
-.button {
+/* .button {
 	display: inline-block;
 	width: 6rem;
 	height: 2rem;
@@ -28,7 +28,7 @@ body {
 	background: #2894ff;
 	text-align: center;
 	margin: 0px 1rem;
-}
+} */
 
 .index-button {
 	animation-name: buttons;
@@ -38,12 +38,12 @@ body {
 	animation-fill-mode: backwards;
 }
 
-.button a{
+/* .button a{
 	text-decoration: none;
 	color:  #fff;
 	line-height: 2rem;
 }
-
+ */
 @keyframes logo {
 	from {
 		margin: -100% auto 15%;
@@ -64,54 +64,4 @@ body {
 	}
 }
 
-/* 注册登录页 */
-.form {
-	width: 80%;
-	height: auto;
-	margin:  20% auto;
-	text-align: center;
-}
 
-.form label {
-	font-size:  1.1rem;
-	margin-top: 1rem;
-	display: block;
-	width:  100%;
-	vertical-align: middle;
-}
-
-.form .label-left {
-	display: inline-block;
-	width: 30%;
-	text-align: right;
-}
-.form input {
-	height: 1.1rem;
-	line-height: 1.1rem;
-	border: 1px solid #eee;
-	margin-left: 0.6rem;
-	margin-top: -0.1rem;
-	outline: none;
-}
-
-.form select{
-	margin-right: 15%;
-	height: 1.1rem;
-	line-height: 1.1rem;
-	border: 1px solid #eee;
-	outline: none;
-	background: none;
-	margin-left: 0.6rem;
-}
-
-.form .error {
-	display: block;
-	color: red;
-	font-size: 1rem;
-	transform:  scale(0.6);
-	margin-left: 30%;
-}
-
-.form .next-step-button {
-	margin-top: 10%;
-}

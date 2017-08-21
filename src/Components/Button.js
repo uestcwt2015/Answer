@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router'
+import {Link, browserHistory} from 'react-router';
+import {fetch} from 'react-fetch';
+
 class Button extends Component {
 	constructor(props) {
 		super(props);
@@ -8,25 +10,56 @@ class Button extends Component {
 	}
 
 	handleSubmit(e) {
-		if(!document.getElementsByClassName("form")[0].getAttribute("canUse")) {
+		let submitData = this.props.data || {};
+		let towards = new Array();
+		let dataHasFull = false;
+		if(JSON.stringify(submitData) == '{}') {
+			let inputs = document.getElementsByTagName("form")[0].getElementsByTagName("input");
+			
+			for(let i = 0; i < inputs.length; i++) {
+				let name = inputs[i].name;
+				let value = inputs[i].value;
+				if(name === "toward") {
+					if(inputs[i].checked){
+						towards.push(value);
+					}
+					
+					submitData[name] = towards;
+				} else {
+					submitData[name] = value;
+				}
+			}
+		}
+		let keys = Object.keys(submitData);
+		for(let i = 0; i < keys.length; i++) {
+			dataHasFull = true;
+			if(submitData[keys[i]] == "") {
+				dataHasFull = false;
+			}
+		}
+
+		if(!dataHasFull) {
 			e.preventDefault();
 		}
-		
-		let inputs = document.getElementsByClassName("form")[0].getElementsByTagName("input");
 
-		let formData = {}
 
-		for (let i = 0; i < inputs.length; i++) {
-			let name = inputs[i].name;
-			let value = inputs[i].value;
 
-			formData[name] = value;
-		}
+		// fetch(this.props.url,{
+		// 	method:'POST',
+		// 	headers: { 
+		// 		'Accept': 'application/json',
+		// 		'Content-Type': 'application/json' 
+		// 		},
+		// 	body:JSON.stringify(submitData)
+		// })
+		// .then(res => res.json())
 	}
-
+	
 	render() {
 		return(
-			<span className={this.props.className}><Link to={this.props.href} onClick={this.props.submit ? this.handleSubmit : ()=>(0)}>{this.props.children}</Link></span>
+			<span className={this.props.className} style={this.props.style}>
+				<Link to={this.props.href} style={this.props.linkStyle} onClick={this.props.submit ? this.handleSubmit : ()=>{if(this.props.path){window.location.href = this.props.path}}}>{this.props.children}</Link>
+			</span>
 		)
 	}
 }

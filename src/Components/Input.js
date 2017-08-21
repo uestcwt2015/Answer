@@ -1,5 +1,26 @@
 import React, {Component} from 'react';
 
+const inputStyle = {
+	'width': '60%',
+	'height': '2rem',
+	'fontSize': '1.2rem',
+	'lineHeight': '2rem',
+	'border': 'none',
+	'borderBottom': '2px solid #b6b1b4',
+	'color': '#b6b1b4',
+	'outline': 'none',
+	'background': 'none',
+	'marginTop': '2rem'
+}
+
+const errorStyle = {
+	'width': '60%',
+	'display': 'block',
+	'color': 'red',
+	'fontSize': '1rem',
+	'transform':  'scale(0.7)',
+}
+
 class Input extends Component {
 	constructor(props) {
 		super(props);
@@ -32,6 +53,12 @@ class Input extends Component {
 						value: '',
 						error: "请输入2到8个汉字"
 					}
+				} else if(inputValue === "") {
+					newState = {
+						valid: false,
+						value: '',
+						error: "姓名不能为空"
+					}
 				} else {
 					newState = {
 						valid: true,
@@ -47,6 +74,12 @@ class Input extends Component {
 						valid: true,
 						value: value,
 						error: ''
+					}
+				} else if(inputValue === "") {
+					newState = {
+						valid: false,
+						value: '',
+						error: "学号不能为空"
 					}
 				} else {
 					newState = {
@@ -66,6 +99,12 @@ class Input extends Component {
 						value: inputValue,
 						error: ''
 					}
+				} else if(inputValue === "") {
+					newState = {
+						valid: false,
+						value: '',
+						error: "用户名不能为空"
+					}
 				} else {
 					newState = {
 						valid: false,
@@ -83,6 +122,12 @@ class Input extends Component {
 						valid: true,
 						value: inputValue,
 						error: ''
+					}
+				} else if(inputValue === "") {
+					newState = {
+						valid: false,
+						value: '',
+						error: "密码不能为空"
 					}
 				} else {
 					newState = {
@@ -121,6 +166,12 @@ class Input extends Component {
 						value: inputValue,
 						error: ''
 					}
+				} else if(inputValue === "") {
+					newState = {
+						valid: false,
+						value: '',
+						error: "邮箱不能为空"
+					}
 				} else {
 					newState = {
 						valid: false,
@@ -138,6 +189,12 @@ class Input extends Component {
 						valid: true,
 						value: inputValue,
 						error: ''
+					}
+				} else if(inputValue === "") {
+					newState = {
+						valid: false,
+						value: '',
+						error: "手机号不能为空"
 					}
 				} else {
 					newState = {
@@ -166,9 +223,8 @@ class Input extends Component {
 	render() {
 		return (
 			<label>
-				<span className="label-left">{this.props.label}:</span>
-				<input type={this.props.type} id={this.props.id} name={this.props.name} onBlur={this.handleChange} />
-		    	<span className="error">{this.state.error}</span>
+				<input placeholder={this.props.label} type={this.props.type} style={inputStyle}id={this.props.id} name={this.props.name} onBlur={this.handleChange} />
+		    	<span className="error" style={errorStyle}>{this.state.error}</span>
 			</label>
 		)
 	}
