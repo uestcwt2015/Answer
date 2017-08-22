@@ -36,43 +36,37 @@ class WrapTop extends Component {
 	}
 
 	logout() {
-		// fetch('/user/logout',{
-		// 	method:'POST',
-		// 	headers: { 
-		// 		'Accept': 'application/json',
-		// 		'Content-Type': 'application/json' 
-		// 		},
-		// 	body:JSON.stringify({})
-		// })
-		// .then(() => {
-		// 	this.setState = {
-		// 		logined: false
-		// 	}
-		// })
-		this.setState({
-			logined: false
+		fetch('/user/logout',{
+			method:'POST',
+			headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'application/json' 
+				},
+			body:JSON.stringify({})
+		})
+		.then(() => {
+			this.setState = {
+				logined: false
+			}
 		})
 	}
 
 	componentDidMount() {
-		// fetch('/user/info',{
-		// 	method:'POST',
-		// 	headers: { 
-		// 		'Accept': 'application/json',
-		// 		'Content-Type': 'application/json' 
-		// 		},
-		// 	body:JSON.stringify({})
-		// })
-		// .then(res => res.json())
-		// .then((data) => {
-		// 	if(data.uid !== '') {
-		// 		this.setState({
-		// 			logined: true
-		// 		})
-		// 	} 
-		// })
-		this.setState({
-			logined: true
+		fetch('/user/info',{
+			method:'POST',
+			headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'application/json' 
+				},
+			body:JSON.stringify({})
+		})
+		.then(res => res.json())
+		.then((data) => {
+			if(data.uid !== '') {
+				this.setState({
+					logined: true
+				})
+			} 
 		})
 	}
 

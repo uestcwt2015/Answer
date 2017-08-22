@@ -44,15 +44,15 @@ class Button extends Component {
 
 
 
-		// fetch(this.props.url,{
-		// 	method:'POST',
-		// 	headers: { 
-		// 		'Accept': 'application/json',
-		// 		'Content-Type': 'application/json' 
-		// 		},
-		// 	body:JSON.stringify(submitData)
-		// })
-		// .then(res => res.json())
+		fetch(this.props.url,{
+			method:'POST',
+			headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'application/json' 
+				},
+			body:JSON.stringify(submitData)
+		})
+		.then(res => res.json())
 	}
 	
 	render() {

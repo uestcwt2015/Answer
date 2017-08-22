@@ -35,21 +35,7 @@ class Question extends Component {
 		super(props);
 
 		this.state = {
-			"order":1,	//这是该用户的第几道题
-			"question": "这是题目内容（只含有文字,这是题目内容（只含有文字）这是题目内容（只含有文字）这是题目内容（只含有文字）这是题目内容（只含有文字）这是题目内容（只含有文字）这是题目内容（只含有文字）这是题目内容（只含有文字）",
-			"questionImages":["/images/1.jpg"],	//没有的时候是一个空数组
-			"answer":'hhh',
-			"type":"jianda",	//或者是jianda（简答题），为jianda的时候没有下边的options
-			"options":{
-				"count":4,	//答案数目	//要么两个选项，要么四个选项
-				"type":"image",	//或者是“image”，选项是文字还是图片
-				"list":[	//答案列表，分别是0-3代表A-D，或者0-1代表正确和错误
-					'../images/girl.jpg',
-					'../images/girl.jpg',
-					'../images/girl.jpg',
-					'../images/girl.jpg'
-				]
-			}
+			
 		}
 		order = this.state.order;
 		this.checked = this.checked.bind(this);
@@ -57,10 +43,10 @@ class Question extends Component {
  	}
 	
 	componentWillMount() {
-		// fetch('/exam/subject?order=' + this.props.order)
-  //           .then((res) => {return res.json()})
-  //           .then((data) => {this.setState(data)})
-  //           .catch((e) => { console.log(e) })
+		fetch('/exam/subject?order=' + this.props.order)
+            .then((res) => {return res.json()})
+            .then((data) => {this.setState(data)})
+            .catch((e) => { console.log(e) })
 	}
 
 	componentDidMount() {

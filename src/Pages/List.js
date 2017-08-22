@@ -11,22 +11,7 @@ class List extends Component {
 		super(props);
 
 		this.state = {
-			detail:  { //指明对应的题号是否完成，完全是和题号对应起来的
-		        "1": true,
-		        "2": false,
-		        "3": false,
-		        "4": false,
-		        "5": true,
-		        "6": false,
-		        "7": false,
-		        "8": false,
-		        "9": false,
-		        "10": false,
-		        "11": false,
-		        "12": false,
-		        "13": false,
-		        "14": false
-		    }
+		
 		}
 
 		this.check = this.check.bind(this);
@@ -60,10 +45,10 @@ class List extends Component {
 	}
 
 	componentDidMount() {
-		// fetch('/exam/status')
-  //           .then((res) => { console.log(res.status);return res.json() })
-  //           .then((data) => { this.setState({detail: data.detail}) })
-  //           .catch((e) => { console.log(e.message) })
+		fetch('/exam/status')
+            .then((res) => { console.log(res.status);return res.json() })
+            .then((data) => { this.setState({detail: data.detail}) })
+            .catch((e) => { console.log(e.message) })
 	}
 
 	render() {
