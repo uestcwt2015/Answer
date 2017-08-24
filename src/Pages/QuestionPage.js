@@ -4,7 +4,8 @@ import {Link, browserHistory} from 'react-router';
 import Button from '../Components/Button';
 import WrapTop from '../Components/WrapTop';
 import WrapBottom from '../Components/WrapBottom';
-import {fetch} from 'react-fetch';
+import 'isomorphic-fetch';
+import 'es6-promise';
 
 let num = 14;
 let order = new Array();

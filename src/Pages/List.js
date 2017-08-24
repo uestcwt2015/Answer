@@ -4,14 +4,15 @@ import WrapTop from '../Components/WrapTop';
 import WrapBottom from '../Components/WrapBottom';
 import File from '../Components/File';
 import {Link} from 'react-router';
-import {fetch} from 'react-fetch';
+import 'isomorphic-fetch';
+import 'es6-promise';
 
 class List extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-		
+			
 		}
 
 		this.check = this.check.bind(this);

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {fetch} from 'react-fetch';
+import 'isomorphic-fetch';
+import 'es6-promise';
+
 let order;
 let answer = [];
 const optionStyle = {

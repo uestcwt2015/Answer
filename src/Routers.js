@@ -2,7 +2,6 @@ import React from 'react';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
 import App from './Pages/App.js';
-import SignUp from './Pages/SignUp.js';
 import StepOne from './Pages/SignUp_StepOne.js';
 import StepTwo from './Pages/SignUp_StepTwo.js';
 import NotFound from './Pages/NotFound.js';

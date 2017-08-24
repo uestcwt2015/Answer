@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import {fetch} from 'react-fetch';
+import 'isomorphic-fetch';
+import 'es6-promise';
 import Button from '../Components/Button';
 
 const acStyle = {
