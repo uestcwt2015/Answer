@@ -10,9 +10,9 @@ import 'es6-promise';
 class List extends Component {
 	constructor(props) {
 		super(props);
-
+		
 		this.state = {
-			
+			detail: {}
 		}
 
 		this.check = this.check.bind(this);
@@ -29,27 +29,40 @@ class List extends Component {
 	}
 	
 	sureSubmit() {
-		fetch('/exam/submitExam', {
+		fetch('http://jcuan.org/exam/submitExam', {
+			credentials: 'include',
 			method: 'POST',
-			headers: { 
-				'Accept': 'application/json',
-				'Content-Type': 'application/json' 
-				},
 			body:JSON.stringify({})
 		})
-		.then(res => res.json())
+		.then((res) => {return res.json()})
 		.then((data) => {
-			if(data.errorCode == 100) {
+			if(data.errorCode === 100) {
 				alert(data.errorMsg);
 			}
 		})
 	}
 
 	componentDidMount() {
-		fetch('/exam/status')
-            .then((res) => { console.log(res.status);return res.json() })
-            .then((data) => { this.setState({detail: data.detail}) })
-            .catch((e) => { console.log(e.message) })
+		let xhr = new XMLHttpRequest();
+		xhr.withCredentials = true;
+		xhr.onreadystatechange = () => {
+			if(xhr.readyState === 4) {
+				if((xhr.status >= 200 && xhr.status <= 300) || xhr.status === 304) {
+					console.log(xhr.responseText);
+					let res = JSON.parse(xhr.responseText);
+					console.log(res)
+					if(res.errorCode === 0) {
+						this.setState({detail: res.detail})
+					} else {
+						alert(res.errorMsg);
+					}
+				}
+			}
+		}
+		
+		xhr.open('GET', 'http://jcuan.org/exam/status', true);
+
+		xhr.send(null);
 	}
 
 	render() {
@@ -60,14 +73,12 @@ class List extends Component {
 				<File />
 				<WrapBottom>
 					<button className="submitSure">
-						<Link to="/achieved" onClick={this.Check} style={{color: '#00BC9B', fontSize: '1rem', textDecoration: 'none'}} >确认交卷</Link>
+						<Link  onClick={this.sureSubmit} style={{color: '#00BC9B', fontSize: '1rem', textDecoration: 'none'}} >确认交卷</Link>
 					</button>
 				</WrapBottom>
 			</div>
 		)
 	}
 }
-
-
 
 export default List;

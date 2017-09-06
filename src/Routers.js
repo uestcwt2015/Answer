@@ -10,6 +10,7 @@ import List from './Pages/List';
 import QuestionPage from './Pages/QuestionPage';
 
 const history = browserHistory;
+
 const Routes = () => (
 	<Router history={history}>
 		<Route path="/" component={App}>

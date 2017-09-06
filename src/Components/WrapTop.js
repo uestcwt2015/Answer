@@ -2,28 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import 'isomorphic-fetch';
 import 'es6-promise';
-
-const wrapStyle = {
-	'width': '100%',
-	'height': '2.5rem',
-	'background': '#3d444c',
-	'fontSize': '1rem',
-	'color': '#ffffff',
-	'textAlign': 'center',
-	'position': 'fixed',
-	'top': '0px',
-	'left': '0px'
-}
-
-const textStyle = {
-	'display': 'inline-block',
-	'width': '4rem',
-	'textAlign': 'center',
-	'position': 'fixed',
-	'left': '50%',
-	'top': '-0.2rem',
-	'marginLeft': '-2rem'
-}
+import CSSModules from 'react-css-modules';
+import style from '../css_modules/wrap.css';
 
 class WrapTop extends Component {
 	constructor(props) {
@@ -37,33 +17,31 @@ class WrapTop extends Component {
 	}
 
 	logout() {
-		fetch('/user/logout',{
+		fetch('http://jcuan.org/user/logout',{
 			method:'POST',
-			headers: { 
-				'Accept': 'application/json',
-				'Content-Type': 'application/json' 
-				},
-			body:JSON.stringify({})
+			body: {}
 		})
-		.then(() => {
-			this.setState = {
+		.then((res) => {return res.json()})
+		.then((data) => {
+			console.log(data);
+			this.setState({
 				logined: false
-			}
+			})
 		})
+
+		console.log(document.cookie);
 	}
 
 	componentDidMount() {
-		fetch('/user/info',{
+		fetch('http://jcuan.org/user/info',{
 			method:'POST',
-			headers: { 
-				'Accept': 'application/json',
-				'Content-Type': 'application/json' 
-				},
-			body:JSON.stringify({})
+			body:" ",
+			credentials: 'include'
 		})
 		.then(res => res.json())
 		.then((data) => {
-			if(data.uid !== '') {
+			console.log(data);
+			if(data.errorCode !== 110) {
 				this.setState({
 					logined: true
 				})
@@ -73,14 +51,14 @@ class WrapTop extends Component {
 
 	render() {
 		return (
-			<div className="wrap-top" style={wrapStyle}>
-				<p className="wrap-top-text" style={textStyle}>{this.props.text}</p>
+			<div className={style.wrap_top}>
+				<p className={style.text}>{this.props.text}</p>
 				{
 					this.props.needLogined ? 
-					<span style={{'float': 'right', 'lineHeight': '3rem', 'marginRight': '1rem'}}>
-						{this.state.logined ? <button onClick={this.logout} style={{'color': '#00BC9B', 'fontSize': '0.8rem'}}>已登录</button> 
+					<span className={style.span}>
+						{this.state.logined ? <button onClick={this.logout} className={style.button}>已登录</button> 
 						: 
-						<Link to='/login' style={{'color': '#00BC9B', 'fontSize': '0.8rem', 'textDecoration': 'none'}}>登录</Link>}
+						<Link to='/login' className={style.link}>登录</Link>}
 					</span>
 					: ""
 				}
@@ -90,4 +68,4 @@ class WrapTop extends Component {
 
 }
 
-export default WrapTop;
+export default CSSModules(WrapTop, style);

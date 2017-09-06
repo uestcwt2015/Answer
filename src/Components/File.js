@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import 'isomorphic-fetch';
 import 'es6-promise';
-
-const fileStyle = {
-	'float': 'left',
-	'marginLeft': '3rem',
-}
+import CSSModules from 'react-css-modules';
+import style from '../css_modules/file.css';
 
 class File extends Component {
 	constructor(props) {
@@ -24,27 +21,33 @@ class File extends Component {
 		let index = filename.length - 1;
 		let name = document.getElementById('filename');
 		name.innerText = filename[index];
-
-		fetch('/exam/upload',{
+		
+		let formData = new FormData();
+		formData.append('data', file);
+		fetch('http://jcuan.org/exam/upload',{
 			method:'POST',
-			headers: { 
-				'Accept': 'application/file',
-				'Content-Type': 'application/json' 
-				},
-			body: file
+			credentials: 'include',
+			body: formData
 		})
 		.then(res => res.json())
+		.then(data => {
+			if(data.errorCode !== 0) {
+				alert(data.errorMsg)
+			}
+		})
 
 	}
 
 	componentDidMount() {
-		fetch('/exam/getAttach')
-   		.then((res) => { console.log(res.status);return res.json() })
+		fetch('http://jcuan.org/exam/getAttach', {credentials: "include"})
+   		.then((res) => {return res.json() })
         .then((data) => {
-  			if(data.errorCode == 0){
+        	console.log(data)
+  			if(data.errorCode === 0){
   				let link = document.createElement('a');
 				link.href = data.url;
 				link.innerText = data.fileName
+				document.getElementsByTagName('label')[0].appendChild(link);
   			}
   		})
 	}
@@ -52,14 +55,14 @@ class File extends Component {
 	render() {
 		return (
 			<div>
-				<label htmlFor="file" style={fileStyle}>
+				<label htmlFor="file" className={style.file}>
 					添加附件📎
-					<span id="filename" style={{marginLeft: '0.5rem',}}></span>
-					<input type="file" id="file" style={{display: "none"}} onChange={this.changeName}/>
+					<span id="filename" className={style.fileName}></span>
+					<input type="file" id="file" className={style.input} onChange={this.changeName}/>
 				</label>
 			</div>
 		)
 	}
 }
 
-export default File;
+export default CSSModules(File, style);

@@ -1,0 +1,53 @@
+.wrap_top {
+	display: block;
+	width: 100%;
+	height:  2.5rem;
+	background: #3d444c;
+	font-size: 1rem;
+	color: #fff;
+	text-align: center;
+	line-height: 2.5rem;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.wrap_bottom {
+	display: block;
+	width: 100%;
+	height:  2.5rem;
+	background: #3d444c;
+	font-size: 1rem;
+	color:  #fff;
+	text-align: center;
+	line-height: 2.5rem;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+}
+
+.text {
+	display: inline-block;
+	width: 4rem;
+	text-align: center;
+	position: fixed;
+	left: 50%;
+	margin-left: -2rem;
+}
+
+.span {
+	float: right;
+	line-height: 3rem;
+	margin-right: 1rem;
+}
+
+.button {
+	color: #00BC9B;
+	font-size: 0.8rem;
+}
+
+.link {
+ 	color:  #00BC9B;
+ 	font-size:  0.8rem;
+ 	text-decoration: none;
+}

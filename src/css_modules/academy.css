@@ -1,0 +1,36 @@
+.container {
+	width: 60%;
+	margin: 0 auto;
+	margin-top: 2rem;
+	overflow: hidden;
+}
+
+.input {
+	width: 100%;
+	height: 2rem;
+	font-size: 1.2rem;
+	line-height: 2rem;
+	border:  none;
+	outline: none;
+	border-bottom: 2px solid #b6b1b4;
+	color: #b6b1b4;
+	background: none;
+}
+
+.ul {
+	width: 100%;
+	height: 6.3rem;
+	overflow: scroll;
+	padding: 0;
+	margin: 0;
+	float: left;
+	background: #fff;
+}
+
+.li {
+	width: 100%;
+	height: 1.2rem;
+	list-style: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

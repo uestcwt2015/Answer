@@ -1,0 +1,22 @@
+.input {
+	width: 60%;
+	height: 2rem;
+	font-size: 1.2rem;
+	line-height: 2rem;
+	border: none;
+	border-bottom: 2px solid #b6b1b4;
+	color:  #b1b6b4;
+	outline: none;
+	background: none;
+	margin-top: 2rem;
+}
+
+.error {
+	width: 60%;
+	display: block;
+	color:  red;
+	font-size: 1rem;
+	transform: scale(0.7);
+	text-align: start;
+	margin-left: 2.1rem;
+}

@@ -20,16 +20,6 @@ body {
 	animation-fill-mode: forwards;
 }
 
-/* .button {
-	display: inline-block;
-	width: 6rem;
-	height: 2rem;
-	border-radius: 15px;
-	background: #2894ff;
-	text-align: center;
-	margin: 0px 1rem;
-} */
-
 .index-button {
 	animation-name: buttons;
 	animation-duration: 1.5s;
@@ -38,12 +28,6 @@ body {
 	animation-fill-mode: backwards;
 }
 
-/* .button a{
-	text-decoration: none;
-	color:  #fff;
-	line-height: 2rem;
-}
- */
 @keyframes logo {
 	from {
 		margin: -100% auto 15%;

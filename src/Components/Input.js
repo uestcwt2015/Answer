@@ -1,25 +1,6 @@
 import React, {Component} from 'react';
-
-const inputStyle = {
-	'width': '60%',
-	'height': '2rem',
-	'fontSize': '1.2rem',
-	'lineHeight': '2rem',
-	'border': 'none',
-	'borderBottom': '2px solid #b6b1b4',
-	'color': '#b6b1b4',
-	'outline': 'none',
-	'background': 'none',
-	'marginTop': '2rem'
-}
-
-const errorStyle = {
-	'width': '60%',
-	'display': 'block',
-	'color': 'red',
-	'fontSize': '1rem',
-	'transform':  'scale(0.7)',
-}
+import CSSModules from 'react-css-modules';
+import style from '../css_modules/input.css';
 
 class Input extends Component {
 	constructor(props) {
@@ -37,7 +18,7 @@ class Input extends Component {
 	handleChange(event) {
 		let name = this.props.name;
 		let inputValue = event.target.value;
-		let valid, value, error;
+		let value = '';
 		
 		let newState = {
 			valid: true,
@@ -215,19 +196,17 @@ class Input extends Component {
 		
 		document.getElementsByClassName('form')[0].setAttribute("canUse", newState.valid);
 		
-		this.setState(
-			{valid, value, error} = newState
-		)
+		this.setState(newState);
 	}
 
 	render() {
 		return (
 			<label>
-				<input placeholder={this.props.label} type={this.props.type} style={inputStyle}id={this.props.id} name={this.props.name} onBlur={this.handleChange} />
-		    	<span className="error" style={errorStyle}>{this.state.error}</span>
+				<input placeholder={this.props.label} type={this.props.type} styleName="input" id={this.props.id} name={this.props.name} onBlur={this.handleChange} />
+		    	<span styleName='error'>{this.state.error}</span>
 			</label>
 		)
 	}
 }
 
-export default Input;
+export default CSSModules(Input, style);

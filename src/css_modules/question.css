@@ -1,0 +1,73 @@
+.container {
+	margin: 3.5rem auto;
+}
+
+.main {
+	padding: 0px;
+	margin:  0px auto;
+	width: 90%;
+	text-align: start;
+}
+
+.question {
+	padding-left: 1em;
+}
+
+.option {
+	display: inline-block;
+	border: 1px solid #3c3c3c;
+	border-radius: 50%;
+	height: 1.4rem;
+	width: 1.4rem;
+	line-height: 1.4rem;
+	text-align: center;
+}
+
+.text {
+	display: block;
+	margin: 0 auto;
+	outline: none;
+	resize: none;
+	border: 1px solid #adadad;
+}
+
+.button {
+	display: block;
+	width:  90%;
+	height:  2.5rem;
+	border:  none;
+	outline: none;
+	border-radius: 5px;
+	background: #00bc98;
+	margin:  2rem auto;
+	color:  white;
+}
+
+.image {
+	width: 80%;
+	display: block;
+	margin:  1rem auto;
+}
+
+.li {
+	list-style: none;
+	text-align: left;
+}
+
+.textLi {
+	list-style: none;
+	line-height: 2.4rem;
+	text-align: left;
+}
+
+.optionText {
+	margin-left: 0.5rem;
+	line-height: 1.4rem;
+}
+
+.optionImage {
+	width: 60%;
+	display: inline-block;
+	margin-left: 0.2rem 1rem 2rem;
+	vertical-align: top;
+}

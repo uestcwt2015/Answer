@@ -1,35 +1,6 @@
 import React, {Component} from 'react';
-
-const labelStyle = {
-	'fontSize':  '1.1rem',
-	'width':  '60%',
-	'margin': '1rem auto 0.5rem',
-	'verticalAlign': 'top',
-	'textAlign': 'left',
-	'color': '#b6b1b4',
-}
-
-const ulStyle = {
-	'width': '60%',
-	'marginLeft': '0.6rem',
-	'margin': ' 0.5rem auto',
-	'padding': '0.4rem',
-	'textAlign': 'left',
-	'color': '#b6b1b4',
-}
-
-const errorStyle = {
-	'display': 'block',
-	'color': 'red',
-	'fontSize': '1rem',
-	'transform':  'scale(0.6)',
-}
-
-const checkboxStyle = {
-	'lineHeight': '1.2rem',
-	'height': '1.2rem',
-	'float': 'left'
-}
+import CSSModules from 'react-css-modules';
+import style from '../css_modules/select.css';
 
 let sum = 0;
 class Select extends Component {
@@ -62,17 +33,18 @@ class Select extends Component {
 	}
 
 	render(){
+		let i = 0;
 		return(
 			<div>
-				<p className="label-left" style={labelStyle}>{this.props.label + '(最多选择两项)'} </p>
-				<ul name={this.props.name} id={this.props.id} style={ulStyle}>
-					<span className="error" style={errorStyle}>{this.state.error}</span>
+				<p styleName="label">{this.props.label + '(最多选择两项)'} </p>
+				<ul name={this.props.name} id={this.props.id} styleName='ul'>
+					<p styleName='error'>{this.state.error}</p>
 					{
 						this.props.arr.map((a) => {
 							return (
 								<p key={this.state.index}>
 									<label htmlFor={"toward" + this.state.index}>
-										<input name="toward" type="checkbox" id={"toward" + this.state.index} value={++this.state.index} onClick={this.CheckState}/>
+										<input name="toward" type="checkbox" styleName="checkbox" id={"toward" + i++} value={++this.state.index} onClick={this.CheckState} />
 										{a}
 									</label>
 								</p>
@@ -85,4 +57,4 @@ class Select extends Component {
 	}
 }
 
-export default Select; 
+export default CSSModules(Select, style); 

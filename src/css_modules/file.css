@@ -1,0 +1,12 @@
+.file {
+	float: left;
+	margin-left: 3rem;
+}
+
+.fileName {
+	margin-left: 0.5rem;
+}
+
+.input {
+	display: none;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import Input from '../Components/Input.js';
 import Button from '../Components/Button.js';
 
+
 const mainStyle = {
 	'position': 'absolute',
 	'top': '0px',
@@ -44,9 +45,9 @@ function StepOne() {
 	return (
 		<div style={mainStyle}>
 			<form className="form" style={formStyle}>
-				<Input label="姓名" type="text" name="userName" id="username" key="username"/>
-				<Input label="学号" type="text" name="studentNumber" id="studentNumber" key="studentNumber"/>
-				<Button href="/signup/steptwo" className="button next-step-button" submit={true} url={"/uesr/registerOne"} style={buttonStyle} linkStyle={linkStyle}>下一步</Button>
+				<Input label="学号" type="text" name="studentId" id="studentNumber" key="studentNumber"/>
+				<Input label="密码" type="password" name="password" id="password" key="password"/>
+				<Button href="/signup/stepTwo" className="button next-step-button" submit={true} url={'http://jcuan.org/user/registerOne'} style={buttonStyle} linkStyle={linkStyle}>下一步</Button>
 			</form>
 		</div>
 	)
