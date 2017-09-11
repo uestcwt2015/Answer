@@ -34,7 +34,7 @@ class Academy extends Component {
 	render() {
 		return (
 			<div styleName="container">
-				<input styleName="input" onClick={this.ListShow} value={this.state.value} placeholder="学院"/>
+				<input styleName="input" onClick={this.ListShow} value={this.state.value} placeholder="学院" name="academy"/>
 				{this.state.isShow ? <AcademyList onClick = {this.ChooseAcademy}/> : null}
 			</div>
 		)

@@ -46,6 +46,7 @@ class QuestionPage extends Component {
 	}
 
 	render() {
+		console.log(this.state);
 		return (
 			<div>
 				<WrapTop text={"第" + this.state.order + "题"} needLogined={true}/>
@@ -93,17 +94,19 @@ function getOrder(num) {
 	let o = order[l - 1];
 	let position;
 	console.log(o, stableNum);
-	if (o === 1) {
+	if (parseInt(o, 10) === 1) {
 		position = {
 			first: true,
 			last: false
 		}
-	} else if (o === stableNum) {
+	} else if (parseInt(o, 10) === stableNum) {
+		console.log('o');
 		position = {
 			first: false,
 			last: true
 		}
 	} else {
+		console.log(o, stableNum);
 		position = {
 			first: false,
 			last: false

@@ -18,20 +18,19 @@ class Question extends Component {
 		order = this.props.order;
 		this.checked = this.checked.bind(this);
 		this.submit = this.submit.bind(this);
+
+		answer = [];
  	}
 	
 	getInitialState() {
 		return {
-			"order": 1,
-			    "question": "公共简单选择题选项是图",
+			"order": 0,
+			    "question": "",
 			    "questionImages": [],
 			    "options": {
 			        "type": "image",
 			        "list": [
-			            "aaa.jpg",
-			            "bbb.jpg",
-			            "ccc.jpg",
-			            'ddd.jpg'
+
 			        ]
 			    },
 			    "type": "选择",
@@ -43,26 +42,38 @@ class Question extends Component {
 	}
 
 	componentDidMount() {
-		fetch('http://jcuan.org/exam/subject?order=' + this.props.order, {credentials: 'include'})
-            .then((res) => {return res.json()})
-            .then((data) => {console.log(data);this.setState(data)})
-            .catch((e) => { console.log(e) })
+		answer = [];
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		return this.state !== nextState;
+		return this.state.order !== nextState.order;
 	}
 
 	componentDidUpdate(nextProps, nextState) {
+		let list = [];
+		if(document.getElementById('options-list')) {
+			list = document.getElementById('options-list').getElementsByTagName('li');
+			for(let i = 0; i < list.length; i++) {
+				list[i].firstChild.style.background = 'none';
+				list[i].firstChild.style.borderColor = '#3c3c3c';
+				list[i].firstChild.style.color = 'black';
+				console.log('2');
+			}
+		}
+		
+
+		
+
 		if(nextProps) {
 			checked = true;
 		}
 
+		console.log(this.state.answer);
 		if(checked === true && this.state.answer !== false) {
 			console.log(this.state.answer);
 			if(this.state.type === '选择') {
-				let list = document.getElementById('options-list').getElementsByTagName('li');
 				let answers = this.state.answer || [];
+
 				answers.map((e) => {
 					list[e].click();
 					checked = false;
@@ -103,13 +114,15 @@ class Question extends Component {
 		})
 		.then((res) => (res.json()))
 		.then((data)=>{console.log(data)})
+		answer = [];
 	}
 
 	checked(e) {
 		let n;
+		console.log('1');
 		if(e.target.nodeName === 'LI') {
 			n = e.target.getElementsByTagName('span')[0];
-		} else if(e.target.nodeName === 'SPAN') {
+		} else if(e.target.nodeName === 'SPAN' || e.target.nodeName === 'IMG' ) {
 			n = e.target.parentNode.getElementsByTagName('span')[0];
 		}
 
@@ -123,7 +136,20 @@ class Question extends Component {
 			n.style.background = 'none';
 			n.style.borderColor = '#3c3c3c';
 			n.style.color = 'black';
-			removeByValue(answer, n.getAttribute('data-num'))
+			
+			(function(arr, val) {
+				console.log(val);
+				for(var i=0; i<arr.length; i++) {
+					console.log(arr[i] === parseInt(val, 10));
+			    	if(arr[i] === parseInt(val, 10)) {
+			    		console.log(arr[i]);
+			    		console.log(answer);
+				        arr.splice(i, 1);
+				        break;
+			    	}
+  				}
+			}(answer, n.getAttribute('data-num')));
+			
 		}
 	}
 
@@ -136,7 +162,7 @@ class Question extends Component {
 							{this.state.order + '.' + this.state.question}
 						</p>
 						<img className="question-image" alt={this.state.questionImages} src={this.state.questionImages} styleName="image"/>
-						<Options key="options" type={this.state.options.type} list={this.state.options.list} onClick={this.checked}/>
+						<Options key="options" order={this.state.order} type={this.state.options.type} list={this.state.options.list} onClick={this.checked}/>
 						<button className='submit' onClick={this.submit} styleName='button'>确认提交</button> 
 					</div>
 				</div>
@@ -150,7 +176,7 @@ class Question extends Component {
 							{this.state.order + '.' + this.state.question}
 						</p>
 						<img className="question-image" alt={this.state.questionImages} src={this.state.questionImages} styleName="image"/>
-						<textarea cols='40' rows='10' styleName="text" id="text"></textarea>
+						<textarea cols='46' rows='10' styleName="text" id="text"></textarea>
 						<button className='submit' onClick={this.submit} styleName='button'>确认提交</button> 
 					</div>
 				</div>
@@ -170,7 +196,7 @@ function Options(props) {
 					props.list.map((text) => {
 					 	return (
 							<li key={i} className={style.textLi} onClick={props.onClick}>
-								<span data-num={i++} className={style.option} key={text}>{String.fromCharCode(charCode++)}</span>
+								<span order={props.order} data-num={i++} className={style.option} key={text}>{String.fromCharCode(charCode++)}</span>
 								<span className={style.optionText}>{text}</span>
 							</li>
 					 	)
@@ -185,7 +211,7 @@ function Options(props) {
 					props.list.map((url) => {
 					 	return (
 							<li key={i} className={style.li} onClick={props.onClick}>
-								<span data-num={i++} className={style.option} >{String.fromCharCode(charCode++)}</span>
+								<span order={props.order} data-num={i++} className={style.option} >{String.fromCharCode(charCode++)}</span>
 								<img src={url} alt={url} className={style.optionImage}/>
  							</li>
 					 	)
@@ -196,13 +222,5 @@ function Options(props) {
 	}
 };
 
-function removeByValue(arr, val) {
-    for(var i=0; i<arr.length; i++) {
-    	if(arr[i] === val) {
-	        arr.splice(i, 1);
-	        break;
-    	}
-  	}
-}
 
 export default CSSModules(Question, style);

@@ -5,7 +5,6 @@ import 'es6-promise';
 import CSSModules from 'react-css-modules';
 import style from '../css_modules/questionList.css';
 
-
 let details = [];
 let keys;
 class QuestionList extends Component {

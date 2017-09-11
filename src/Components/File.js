@@ -16,25 +16,29 @@ class File extends Component {
 	}
 	
 	changeName() {
-		let file = document.getElementById('file').value;
-		let filename = file.toString().split('\\');
+		let file = document.getElementById('file');
+		let filename = file.value.toString().split('\\');
 		let index = filename.length - 1;
 		let name = document.getElementById('filename');
 		name.innerText = filename[index];
 		
 		let formData = new FormData();
-		formData.append('data', file);
-		fetch('http://jcuan.org/exam/upload',{
-			method:'POST',
-			credentials: 'include',
-			body: formData
-		})
-		.then(res => res.json())
-		.then(data => {
-			if(data.errorCode !== 0) {
-				alert(data.errorMsg)
+		formData.append('file', file.files[0]);
+		
+		let xhr = new XMLHttpRequest();
+		xhr.withCredentials = true;
+		xhr.onreadystatechange = () => {
+			if(xhr.readyState === 4) {
+				if((xhr.status >= 200 && xhr.status <= 300) || xhr.status === 304) {
+					console.log('file');
+				}
 			}
-		})
+		}
+		
+		xhr.open('POST', 'http://jcuan.org/exam/upload' , true);
+
+		xhr.send(formData);
+
 
 	}
 
@@ -44,10 +48,10 @@ class File extends Component {
         .then((data) => {
         	console.log(data)
   			if(data.errorCode === 0){
-  				let link = document.createElement('a');
-				link.href = data.url;
-				link.innerText = data.fileName
-				document.getElementsByTagName('label')[0].appendChild(link);
+				this.setState({
+					url: data.url,
+					filename: data.fileName
+				})
   			}
   		})
 	}
@@ -57,7 +61,9 @@ class File extends Component {
 			<div>
 				<label htmlFor="file" className={style.file}>
 					添加附件📎
-					<span id="filename" className={style.fileName}></span>
+					<span id="filename" className={style.fileName}>
+						<a className={style.a} href={this.state.url}>{this.state.filename}</a>  
+					</span>
 					<input type="file" id="file" className={style.input} onChange={this.changeName}/>
 				</label>
 			</div>

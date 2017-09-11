@@ -1,0 +1,49 @@
+.main {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	background-image: url('./images/bg2.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 0px -100px;
+}
+
+.link {
+	color:  #b6b1b4;
+	text-decoration: none;
+	line-height: 2rem;
+	font-size: 1rem;
+}
+
+.signup_button {
+	width: 120px;
+	height: 2rem;
+	position: absolute;
+	top:  65%;
+	left: 50%;
+	margin-left: -60px;
+	border: 1px solid #b6b1b4;
+	border-radius: 15px;
+}
+
+.login_button {
+	width: 120px;
+	height: 2rem;
+	position: absolute;
+	top:  72%;
+	left: 50%;
+	margin-left: -60px;
+	border: 1px solid #b6b1b4;
+	border-radius: 15px;
+}
+.copyright {
+	color: #b6b1b4;
+	width: 80px;
+	display: inline-block;
+	position: absolute;
+	top: 90%;
+	text-align: center;
+	margin-left: -40px;
+}

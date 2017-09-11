@@ -28,8 +28,6 @@ class WrapTop extends Component {
 				logined: false
 			})
 		})
-
-		console.log(document.cookie);
 	}
 
 	componentDidMount() {

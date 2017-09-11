@@ -194,7 +194,6 @@ class Input extends Component {
 				}
 		}
 		
-		document.getElementsByClassName('form')[0].setAttribute("canUse", newState.valid);
 		
 		this.setState(newState);
 	}

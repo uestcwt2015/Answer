@@ -90,7 +90,7 @@ class Button extends Component {
 	render() {
 		return(
 			<span className={this.props.className} style={this.props.style}>
-				<Link style={this.props.linkStyle} onClick={this.props.submit ? this.handleSubmit : ()=>{console.log(this.props.href);browserHistory.push(this.props.href)}}>{this.props.children}</Link>
+				<Link className={this.props.linkStyle} onClick={this.props.submit ? this.handleSubmit : ()=>{console.log(this.props.href);browserHistory.push(this.props.href)}}>{this.props.children}</Link>
 			</span>
 		)
 	}
