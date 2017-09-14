@@ -19,18 +19,15 @@ class Academy extends Component {
 		this.setState({
 			isShow: true
 		})
-		console.log(1);
 	}
 
 	ChooseAcademy(e) {
 		let value = e.target.innerText;
-		console.log(value);
-
+		
 		this.setState({
 			value: value,
 			isShow: false
 		});
-		console.log(3)
 	}
 
 	render() {

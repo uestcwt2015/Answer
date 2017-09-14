@@ -10,7 +10,7 @@ function Login(props) {
 			<form className={style.form}>
 				<Input label="Username" name="uid" type="text" id="uid" key="uid" />
 				<Input label="Password" name="password" type="password" id="password" key="password" />
-				<Button href="questionlist" submit={true} url={"http://jcuan.org/user/logout"} className={style.button} linkStyle={style.link}>立即登录</Button>
+				<Button href="questionlist" submit={true} url={"http://jcuan.org/user/login"} className={style.button} linkStyle={style.link}>立即登录</Button>
 			</form>
  		</div>
  	)

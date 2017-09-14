@@ -30,7 +30,7 @@ class Button extends Component {
 				}
 			}
 		}
-		console.log(submitData);
+
 		let keys = Object.keys(submitData);
 		for(let i = 0; i < keys.length; i++) {
 			dataHasFull = true;
@@ -38,7 +38,7 @@ class Button extends Component {
 				dataHasFull = false;
 			}
 		}
-		console.log(dataHasFull);
+
 		if(!dataHasFull) {
 			e.preventDefault();
 		}
@@ -56,7 +56,7 @@ class Button extends Component {
 		.then((res) => {return res.json()})
 		.then((data) => {
 			if(data.errorCode === 0) {
-				// hashHistory.push(this.props.href);
+				hashHistory.push(this.props.href);
 				
 			} else {
 				alert(data.errorMsg);
