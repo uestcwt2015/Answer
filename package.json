@@ -20,6 +20,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "extract-text-webpack-plugin": "^2.1.2",
     "react-scripts": "1.0.10"
   },
   "scripts": {

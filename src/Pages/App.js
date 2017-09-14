@@ -1,8 +1,7 @@
 import React from 'react';
 import Button from '../Components/Button.js';
-import CSSModules from 'react-css-modules';
 import style from '../css_modules/app.css';
-
+console.log(style);
 const App = ({children}) => {
 	if(children) {
 		return (
@@ -21,5 +20,5 @@ const App = ({children}) => {
 	}
 };
 
-export default CSSModules(App, style);
+export default App;
 

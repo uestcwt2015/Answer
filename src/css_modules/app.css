@@ -12,6 +12,7 @@
 }
 
 .copyright {
+	font-size: 0.8rem;
 	color: black;
 	width: 80px;
 	display: inline-block;
@@ -108,6 +109,8 @@
 	.login_button:hover, .signup_button:hover {
 		background: none;
 	}
+
+	
 	.copyright {
 		color: #b6b1b4;
 		width: 80px;
