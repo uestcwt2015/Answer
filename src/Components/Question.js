@@ -57,7 +57,6 @@ class Question extends Component {
 				list[i].firstChild.style.background = 'none';
 				list[i].firstChild.style.borderColor = '#3c3c3c';
 				list[i].firstChild.style.color = 'black';
-				console.log('2');
 			}
 		}
 		
@@ -68,9 +67,7 @@ class Question extends Component {
 			checked = true;
 		}
 
-		console.log(this.state.answer);
 		if(checked === true && this.state.answer !== false) {
-			console.log(this.state.answer);
 			if(this.state.type === '选择') {
 				let answers = this.state.answer || [];
 

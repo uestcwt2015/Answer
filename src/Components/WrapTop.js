@@ -38,7 +38,6 @@ class WrapTop extends Component {
 		.then(res => res.json())
 		.then((data) => {
 			if(data.errorCode !== 110) {
-				console.log(data)
 				this.setState({
 					logined: true
 				})

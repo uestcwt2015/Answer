@@ -212,7 +212,7 @@ class Input extends Component {
 		return (
 			<label className={this.props.labelstyle || style.label}>
 				<input placeholder={this.props.label} type={this.props.type} className={style[this.props.className] || style.input} id={this.props.id} name={this.props.name} onBlur={this.handleChange} />
-		    	<span styleName='error'>{this.state.error}</span>
+		    	<span className={style.error}>{this.state.error}</span>
 			</label>
 		)
 	}
