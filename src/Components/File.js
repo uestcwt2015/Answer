@@ -46,10 +46,9 @@ class File extends Component {
 		fetch('http://jcuan.org/exam/getAttach', {credentials: "include"})
    		.then((res) => {return res.json() })
         .then((data) => {
-        	console.log(data)
   			if(data.errorCode === 0){
 				this.setState({
-					url: data.url,
+					url: 'http://jcuan.org' + data.url,
 					filename: data.fileName
 				})
   			}
@@ -60,7 +59,7 @@ class File extends Component {
 		return (
 			<div>
 				<label htmlFor="file" className={style.file}>
-					添加附件📎
+					<span className={style.button}>添加附件</span>
 					<span id="filename" className={style.fileName}>
 						<a className={style.a} href={this.state.url}>{this.state.filename}</a>  
 					</span>

@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import Question from '../Components/Question';
-import {browserHistory} from 'react-router';
+import {hashHistory} from 'react-router';
 import StepButton from '../Components/StepButton';
 import WrapTop from '../Components/WrapTop';
 import WrapBottom from '../Components/WrapBottom';
+import CSSModules from 'react-css-modules';
+import style from '../css_modules/question_page.css';
 import 'isomorphic-fetch';
 import 'es6-promise';
 
@@ -12,8 +14,6 @@ let stableNum;
 class QuestionPage extends Component {
 	constructor() {
 		super();
-		
-		
 
 		this.state = getOrder();
 	}
@@ -27,7 +27,6 @@ class QuestionPage extends Component {
 					console.log(xhr.responseText);
 					let res = JSON.parse(xhr.responseText);
 					let num = Object.keys(res.detail).length;
-					console.log(num);
 					this.setState(getOrder(num));
 				}
 			}
@@ -54,26 +53,23 @@ class QuestionPage extends Component {
 				<WrapBottom>
 					<div className="buttons-box">
 						<StepButton key="prev-button"
-								className={!this.state.position.first ? "button" : "no-button"} 
+								className={style.button} 
 								href={!this.state.position.first ? "/questionlist/" + String(this.state.prevOrder) : "/questionlist/"}
-								linkStyle={{color: '#00BC9B', fontSize: '1rem', textDecoration: 'none'}}
-								style={{display: 'inline-block', width: '33%', textAlign: 'center'}}
+								linkStyle={style.link}
 						>
 							上一题
 						</StepButton>
 						<StepButton key="back-list" 
-								className={"button"} 
+								className={style.button} 
 								href="/questionlist"
-								linkStyle={{color: '#00BC9B', fontSize: '1rem', textDecoration: 'none'}}
-								style={{display: 'inline-block', width: '33%', textAlign: 'center'}}
+								linkStyle={style.link}
 						>
 							返回目录
 						</StepButton>
 						<StepButton key="next-button"
-								className={!this.state.position.last ? "button" : "no-button"} 
+								className={style.button} 
 								href={!this.state.position.last ? "/questionlist/" + String(this.state.nextOrder) : "/questionlist/"}
-								linkStyle={{color: '#00BC9B', fontSize: '1rem', textDecoration: 'none'}}
-								style={{display: 'inline-block', width: '33%', textAlign: 'center'}}
+								linkStyle={style.link}
 						>
 							下一题
 						</StepButton>
@@ -88,7 +84,7 @@ function getOrder(num) {
 	if(num !== undefined) {
 		stableNum = num;
 	}
-	let path = browserHistory.getCurrentLocation().pathname;
+	let path = hashHistory.getCurrentLocation().pathname;
 	let order = path.split("/");
 	let l = order.length;
 	let o = order[l - 1];
@@ -121,4 +117,4 @@ function getOrder(num) {
 	}
 }
 
-export default QuestionPage;
+export default CSSModules(QuestionPage, style);

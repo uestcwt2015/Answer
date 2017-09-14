@@ -28,7 +28,16 @@
 }
 
 .checkbox {
-	line-height: 1.2rem;
-	height: 1.2rem;
+	line-height: 1.4rem;
+	height: 1.4rem;
 	float: left;
+	margin-right: 0.3em;
+}
+
+.p {
+	text-align: start;
+	line-height: 1.4rem;
+	height: 1.4rem;
+	padding: 0.1rem;
+	font-size: 1rem;
 }

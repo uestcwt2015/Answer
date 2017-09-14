@@ -1,5 +1,6 @@
 .container {
 	margin: 3.5rem auto;
+	padding: 0 2rem
 }
 
 .main {
@@ -10,7 +11,7 @@
 }
 
 .question {
-	padding-left: 1em;
+	
 }
 
 .option {
@@ -29,11 +30,12 @@
 	outline: none;
 	resize: none;
 	border: 1px solid #adadad;
+
 }
 
 .button {
 	display: block;
-	width:  90%;
+	width: 300px;
 	height:  2.5rem;
 	border:  none;
 	outline: none;
@@ -54,7 +56,7 @@
 	text-align: left;
 }
 
-.textLi {
+.text_li {
 	list-style: none;
 	line-height: 2.4rem;
 	text-align: left;
@@ -70,4 +72,53 @@
 	display: inline-block;
 	margin-left: 0.2rem 1rem 2rem;
 	vertical-align: top;
+}
+
+@media screen and (min-width: 800px) {
+	.container {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		bottom: 0px;
+		right:  0px;
+		background: #eeeeee;
+		margin: 50px auto 0px;
+	}
+
+	.main {
+		width: 800px;
+		height: 500px;
+		background: #fff;
+		margin: 50px auto 100px;
+		border-radius: 15px;
+		font-size: 16px;
+		box-sizing: border-box;
+		padding: 40px 40px;
+		text-align: left;
+	}
+	
+	.text_li {
+		width: 100%;
+		border: 1px solid #eeeeee;
+		margin-top: 10px;
+		box-sizing: border-box;
+		padding-left: 10px;
+	}
+	
+	.ul {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.text_li:hover {
+		background: #eee;
+		color: #00bc98;
+	}
+
+	.textarea {
+		width: 100%;
+		padding: 0.5em;
+		font-size: 16px;
+	}
+
 }

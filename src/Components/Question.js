@@ -35,7 +35,6 @@ class Question extends Component {
 			    },
 			    "type": "选择",
 			    "answer": [
-			        5
 			    ],
 			    "errorCode": 0
 		}
@@ -50,6 +49,7 @@ class Question extends Component {
 	}
 
 	componentDidUpdate(nextProps, nextState) {
+		answer = [];
 		let list = [];
 		if(document.getElementById('options-list')) {
 			list = document.getElementById('options-list').getElementsByTagName('li');
@@ -113,13 +113,12 @@ class Question extends Component {
 			body: formData
 		})
 		.then((res) => (res.json()))
-		.then((data)=>{console.log(data)})
+		.then((data)=>{console.log(data)});
 		answer = [];
 	}
 
 	checked(e) {
 		let n;
-		console.log('1');
 		if(e.target.nodeName === 'LI') {
 			n = e.target.getElementsByTagName('span')[0];
 		} else if(e.target.nodeName === 'SPAN' || e.target.nodeName === 'IMG' ) {
@@ -131,6 +130,7 @@ class Question extends Component {
 			n.style.borderColor = '#00BC9B';
 			n.style.color = 'white';
 			let m = parseInt(n.getAttribute('data-num'), 10);
+			if(!Array.isArray(answer)) return;
 			answer.push(m);
 		} else if (n.style.background === 'rgb(0, 188, 155)'){
 			n.style.background = 'none';
@@ -138,14 +138,9 @@ class Question extends Component {
 			n.style.color = 'black';
 			
 			(function(arr, val) {
-				console.log(val);
 				for(var i=0; i<arr.length; i++) {
-					console.log(arr[i] === parseInt(val, 10));
 			    	if(arr[i] === parseInt(val, 10)) {
-			    		console.log(arr[i]);
-			    		console.log(answer);
 				        arr.splice(i, 1);
-				        break;
 			    	}
   				}
 			}(answer, n.getAttribute('data-num')));
@@ -176,7 +171,7 @@ class Question extends Component {
 							{this.state.order + '.' + this.state.question}
 						</p>
 						<img className="question-image" alt={this.state.questionImages} src={this.state.questionImages} styleName="image"/>
-						<textarea cols='46' rows='10' styleName="text" id="text"></textarea>
+						<textarea cols='46' rows='10' styleName="text" id="text" className={style.textarea}></textarea>
 						<button className='submit' onClick={this.submit} styleName='button'>确认提交</button> 
 					</div>
 				</div>
@@ -191,11 +186,11 @@ function Options(props) {
 
 	if(props.type === "text") {
 		return (
-			<ul className={style.main} id="options-list">
+			<ul className={style.ul} id="options-list">
 				{
 					props.list.map((text) => {
 					 	return (
-							<li key={i} className={style.textLi} onClick={props.onClick}>
+							<li key={i} className={style.text_li} onClick={props.onClick}>
 								<span order={props.order} data-num={i++} className={style.option} key={text}>{String.fromCharCode(charCode++)}</span>
 								<span className={style.optionText}>{text}</span>
 							</li>
@@ -206,7 +201,7 @@ function Options(props) {
 		)
 	} else if(props.type === "image") {
 		return (
-			<ul className={style.main} id='options-list'>
+			<ul className={style.ul} id='options-list'>
 				{
 					props.list.map((url) => {
 					 	return (

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import {Link, hashHistory} from 'react-router';
 import 'isomorphic-fetch';
 import 'es6-promise';
 import CSSModules from 'react-css-modules';
 import style from '../css_modules/questionList.css';
+import File from './File';
 
 let details = [];
 let keys;
@@ -36,21 +37,20 @@ class QuestionList extends Component {
 	}
 
 	render() {
-		let i = 0;
 		return (
-			<ul className={style.ul}>
-				{
-					this.state.detail.map((e) => {
-						i++;
-						return(
-							<span key={i} className={e ? style.button_active : style.button}>
-								<Link to={'question/' + keys[i-1]} style={{color: 'inherit', textDecoration: 'none'}}>{keys[i-1]}</Link>
-							</span>
-						)
-					})
-				}
-			</ul>
-			
+			<div className={style.main}>
+				<ul className={style.ul}>
+					{
+						this.state.detail.map((n, i) => {
+							return(
+								<span key={i} className={n ? style.button_active : style.button} onClick = {(e)=>{hashHistory.push('question/' + keys[i])}}>
+									<Link to={'question/' + keys[i]} style={{color: 'inherit', textDecoration: 'none'}}>{keys[i]}</Link>
+								</span>		
+							)
+						})	
+					}
+				</ul>
+			</div>
 		)
 	} 
 }

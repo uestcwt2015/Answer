@@ -17,6 +17,7 @@ class Input extends Component {
 
 	handleChange(event) {
 		let name = this.props.name;
+		console.log(name);
 		let inputValue = event.target.value;
 		let value = '';
 		
@@ -49,7 +50,7 @@ class Input extends Component {
 				}
 				
 				break;
-			case "studentNumber":
+			case "studentId":
 				if(inputValue.length === 12 || inputValue.length === 13) {
 					newState = {
 						valid: true,
@@ -186,6 +187,15 @@ class Input extends Component {
 				}
 
 				break;
+			case "captcha": 
+				if(inputValue === "") {
+					newState = {
+						valid: false,
+						value: '',
+						error: "验证码不能为空"
+					}
+				}
+				break;
 			default: 
 				newState = {
 					valid: true,
@@ -200,8 +210,8 @@ class Input extends Component {
 
 	render() {
 		return (
-			<label>
-				<input placeholder={this.props.label} type={this.props.type} styleName="input" id={this.props.id} name={this.props.name} onBlur={this.handleChange} />
+			<label className={this.props.labelstyle || style.label}>
+				<input placeholder={this.props.label} type={this.props.type} className={style[this.props.className] || style.input} id={this.props.id} name={this.props.name} onBlur={this.handleChange} />
 		    	<span styleName='error'>{this.state.error}</span>
 			</label>
 		)

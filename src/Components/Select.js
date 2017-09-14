@@ -8,7 +8,6 @@ class Select extends Component {
 		super(props);
 
 		this.state = {
-			index: 0,
 			error: ''
 		}
 
@@ -33,18 +32,17 @@ class Select extends Component {
 	}
 
 	render(){
-		let i = 0;
 		return(
 			<div>
-				<p styleName="label">{this.props.label + '(最多选择两项)'} </p>
-				<ul name={this.props.name} id={this.props.id} styleName='ul'>
+				<p className={style.label}>{this.props.label + '(最多选择两项)'} </p>
+				<ul name={this.props.name} id={this.props.id} className={style.ul}>
 					<p styleName='error'>{this.state.error}</p>
 					{
-						this.props.arr.map((a) => {
+						this.props.arr.map((a, i) => {
 							return (
-								<p key={this.state.index}>
-									<label htmlFor={"toward" + this.state.index}>
-										<input name="toward" type="checkbox" styleName="checkbox" id={"toward" + i++} value={++this.state.index} onClick={this.CheckState} />
+								<p key={i} className={style.p}>
+									<label htmlFor={"toward" + i}>
+										<input name="toward" type="checkbox" className={style.checkbox} id={"toward" + i} value={i+1} onClick={this.CheckState} />
 										{a}
 									</label>
 								</p>

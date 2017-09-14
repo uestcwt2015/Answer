@@ -23,7 +23,6 @@ class WrapTop extends Component {
 		})
 		.then((res) => {return res.json()})
 		.then((data) => {
-			console.log(data);
 			this.setState({
 				logined: false
 			})
@@ -38,8 +37,8 @@ class WrapTop extends Component {
 		})
 		.then(res => res.json())
 		.then((data) => {
-			console.log(data);
 			if(data.errorCode !== 110) {
+				console.log(data)
 				this.setState({
 					logined: true
 				})
@@ -50,16 +49,18 @@ class WrapTop extends Component {
 	render() {
 		return (
 			<div className={style.wrap_top}>
-				<p className={style.text}>{this.props.text}</p>
-				{
-					this.props.needLogined ? 
-					<span className={style.span}>
-						{this.state.logined ? <button onClick={this.logout} className={style.button}>已登录</button> 
-						: 
-						<Link to='/login' className={style.link}>登录</Link>}
-					</span>
-					: ""
-				}
+				<div className={style.center}>
+					<p className={style.text}>{this.props.text}</p>
+					{
+						this.props.needLogined ? 
+						<span className={style.span}>
+							{this.state.logined ? <a onClick={this.logout} className={style.button}>已登录</a> 
+							: 
+							<Link to='/login' className={style.link}>登录</Link>}
+						</span>
+						: ""
+					}
+				</div>
 			</div>
 		)
 	}

@@ -3,7 +3,9 @@ import QuestionList from '../Components/QuestionsList';
 import WrapTop from '../Components/WrapTop';
 import WrapBottom from '../Components/WrapBottom';
 import File from '../Components/File';
-import {Link} from 'react-router';
+import {Link, hashHistory} from 'react-router';
+import CSSModules from 'react-css-modules';
+import style from '../css_modules/list.css';
 import 'isomorphic-fetch';
 import 'es6-promise';
 
@@ -36,8 +38,10 @@ class List extends Component {
 		})
 		.then((res) => {return res.json()})
 		.then((data) => {
-			if(data.errorCode === 100) {
+			if(data.errorCode >= 100) {
 				alert(data.errorMsg);
+			} else {
+				hashHistory.push('achieve');
 			}
 		})
 	}
@@ -48,9 +52,7 @@ class List extends Component {
 		xhr.onreadystatechange = () => {
 			if(xhr.readyState === 4) {
 				if((xhr.status >= 200 && xhr.status <= 300) || xhr.status === 304) {
-					console.log(xhr.responseText);
 					let res = JSON.parse(xhr.responseText);
-					console.log(res)
 					if(res.errorCode === 0) {
 						this.setState({detail: res.detail})
 					} else {
@@ -70,15 +72,12 @@ class List extends Component {
 			<div className="question-list-box">
 				<WrapTop text="答题卡" needLogined={true}/>
 				<QuestionList detail={this.state.detail} />
-				<File />
 				<WrapBottom>
-					<button className="submitSure">
-						<Link  onClick={this.sureSubmit} style={{color: '#00BC9B', fontSize: '1rem', textDecoration: 'none'}} >确认交卷</Link>
-					</button>
+					<Link  onClick={this.sureSubmit} className={style.link} >确认交卷</Link>
 				</WrapBottom>
 			</div>
 		)
 	}
 }
 
-export default List;
+export default CSSModules(List, style);

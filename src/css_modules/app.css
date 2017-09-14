@@ -1,49 +1,120 @@
 .main {
+	min-width: 1200px;
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	bottom: 0px;
 	right: 0px;
-	background-image: url('./images/bg2.jpg');
-	background-size: cover;
+	background-image: url('../images/logo.jpg');
+	background-size: 50%;
 	background-repeat: no-repeat;
-	background-position: 0px -100px;
+	background-position: center center;
 }
 
-.link {
-	color:  #b6b1b4;
-	text-decoration: none;
-	line-height: 2rem;
-	font-size: 1rem;
-}
-
-.signup_button {
-	width: 120px;
-	height: 2rem;
-	position: absolute;
-	top:  65%;
-	left: 50%;
-	margin-left: -60px;
-	border: 1px solid #b6b1b4;
-	border-radius: 15px;
-}
-
-.login_button {
-	width: 120px;
-	height: 2rem;
-	position: absolute;
-	top:  72%;
-	left: 50%;
-	margin-left: -60px;
-	border: 1px solid #b6b1b4;
-	border-radius: 15px;
-}
 .copyright {
-	color: #b6b1b4;
+	color: black;
 	width: 80px;
 	display: inline-block;
 	position: absolute;
 	top: 90%;
+	left: 50%;
 	text-align: center;
 	margin-left: -40px;
+}
+
+.signup_button {
+	position: absolute;
+	top:  70%;
+	left: 50%;
+	width: 100px;
+	height: 30px;
+	display: inline-block;
+	background: #0391fe;
+	color: white;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 15px;
+	font-size: 18px;
+	margin-left: -150px;
+}
+
+.login_button {
+	position: absolute;
+	top:  70%;
+	left: 50%;
+	width: 100px;
+	height: 30px;
+	display: inline-block;
+	background: #0391fe;
+	color: white;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 15px;
+	font-size: 18px;
+	margin-left: 50px;
+}
+
+.login_button:hover, .signup_button:hover {
+	background: #0675cb;
+}
+
+
+@media screen and (max-width: 800px) {
+	.main {
+		min-width: 300px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		bottom: 0px;
+		right: 0px;
+		background-image: url('../images/bg.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 0px -50px;
+		background-attachment: fixed;
+	}
+
+	.link {
+		color:  #b6b1b4;
+		text-decoration: none;
+		line-height: 2rem;
+		font-size: 1rem;
+	}
+
+	.signup_button {
+		width: 120px;
+		height: 2rem;
+		position: absolute;
+		background: none;
+		top:  65%;
+		left: 50%;
+		margin-left: -60px;
+		border: 1px solid #b6b1b4;
+		border-radius: 15px;
+	}
+
+	.login_button {
+		width: 120px;
+		height: 2rem;
+		position: absolute;
+		background: none;
+		top:  72%;
+		left: 50%;
+		margin-left: -60px;
+		border: 1px solid #b6b1b4;
+		border-radius: 15px;
+	}
+
+	.login_button:hover, .signup_button:hover {
+		background: none;
+	}
+	.copyright {
+		color: #b6b1b4;
+		width: 80px;
+		display: inline-block;
+		position: absolute;
+		top: 90%;
+		text-align: center;
+		margin-left: -40px;
+	}
 }

@@ -19,8 +19,9 @@ class Academy extends Component {
 		this.setState({
 			isShow: true
 		})
+		console.log(1);
 	}
-	
+
 	ChooseAcademy(e) {
 		let value = e.target.innerText;
 		console.log(value);
@@ -29,12 +30,13 @@ class Academy extends Component {
 			value: value,
 			isShow: false
 		});
+		console.log(3)
 	}
 
 	render() {
 		return (
 			<div styleName="container">
-				<input styleName="input" onClick={this.ListShow} value={this.state.value} placeholder="学院" name="academy"/>
+				<input styleName="input" onClick={this.ListShow} value={this.state.value} placeholder="学院" name="academy" />
 				{this.state.isShow ? <AcademyList onClick = {this.ChooseAcademy}/> : null}
 			</div>
 		)
