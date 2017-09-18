@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import {Link, hashHistory} from 'react-router';
 import 'isomorphic-fetch';
 import 'es6-promise';
 import CSSModules from 'react-css-modules';
@@ -17,31 +17,40 @@ class WrapTop extends Component {
 	}
 
 	logout() {
-		fetch('http://jcuan.org/user/logout',{
+		fetch('http://exam.stuhome.com/user/logout',{
 			method:'POST',
+			credentials: 'include',
 			body: {}
 		})
 		.then((res) => {return res.json()})
 		.then((data) => {
+			if(data.errorMsg){
+				alert(data.errorMsg);
+			}
 			this.setState({
 				logined: false
 			})
+
+			hashHistory.push('/');
 		})
 	}
 
 	componentDidMount() {
-		fetch('http://jcuan.org/user/info',{
+		fetch('http://exam.stuhome.com/user/info',{
 			method:'POST',
 			body:" ",
 			credentials: 'include'
 		})
 		.then(res => res.json())
 		.then((data) => {
+			if(data.errorMsg){
+				alert(data.errorMsg);
+			}
 			if(data.errorCode !== 110) {
 				this.setState({
 					logined: true
 				})
-			} 
+			}
 		})
 	}
 
@@ -51,10 +60,10 @@ class WrapTop extends Component {
 				<div className={style.center}>
 					<p className={style.text}>{this.props.text}</p>
 					{
-						this.props.needLogined ? 
+						this.props.needLogined ?
 						<span className={style.span}>
-							{this.state.logined ? <a onClick={this.logout} className={style.button}>已登录</a> 
-							: 
+							{this.state.logined ? <a onClick={this.logout} className={style.button}>退出登录</a>
+							:
 							<Link to='/login' className={style.link}>登录</Link>}
 						</span>
 						: ""

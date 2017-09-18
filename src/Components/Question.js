@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {hashHistory} from 'react-router';
 import 'isomorphic-fetch';
 import 'es6-promise';
 import CSSModules from 'react-css-modules';
@@ -21,7 +22,7 @@ class Question extends Component {
 
 		answer = [];
  	}
-	
+
 	getInitialState() {
 		return {
 			"order": 0,
@@ -59,9 +60,6 @@ class Question extends Component {
 				list[i].firstChild.style.color = 'black';
 			}
 		}
-		
-
-		
 
 		if(nextProps) {
 			checked = true;
@@ -79,17 +77,25 @@ class Question extends Component {
 			} else if(this.state.type === '简答') {
 				let text = document.getElementById('text');
 				text.value = this.state.answer;
+
+			}
+		} else {
+			let text = document.getElementById('text');
+			if(this.state.type === '简答' && this.state.answer === false) {
+					text.value = ' ';
 			}
 		}
-		
+
+
+
 	}
-	
+
 	componentWillReceiveProps(nextProps) {
-		fetch('http://jcuan.org/exam/subject?order=' + nextProps.order, {credentials: 'include'})
+		fetch('http://exam.stuhome.com/exam/subject?order=' + nextProps.order, {credentials: 'include'})
             .then((res) => {return res.json()})
-            .then((data) => {console.log(data);this.setState(data)})
-            .catch((e) => { console.log(e) })
-	}
+            .then((data) => {this.setState(data)})
+            .catch((e) => {alert(e)})
+    }
 
 	submit() {
 		if(this.state.type === '简答') {
@@ -100,18 +106,27 @@ class Question extends Component {
 			'order': this.state.order,
 			'answer': answer
 		}
-		alert(o.answer);
+
 		let formData = new FormData();
 		formData.append("data", JSON.stringify(o));
-		console.log(formData.get('data'));
-		fetch('http://jcuan.org/exam/submitAnswer' ,{
+
+		fetch('http://exam.stuhome.com/exam/submitAnswer' ,{
 			method:'POST',
 			credentials: 'include',
 			body: formData
 		})
 		.then((res) => (res.json()))
-		.then((data)=>{console.log(data)});
-		answer = [];
+		.then((data)=>{
+			if(data.errorCode === 0){
+				if(this.state.order === this.props.num){
+					hashHistory.push('/questionlist');
+				} else {
+					hashHistory.push('/questionlist/' + String(this.state.order + 1));
+				}
+			} else {
+				alert(data.errorMsg);
+			}
+		})
 	}
 
 	checked(e) {
@@ -133,7 +148,7 @@ class Question extends Component {
 			n.style.background = 'none';
 			n.style.borderColor = '#3c3c3c';
 			n.style.color = 'black';
-			
+
 			(function(arr, val) {
 				for(var i=0; i<arr.length; i++) {
 			    	if(arr[i] === parseInt(val, 10)) {
@@ -141,35 +156,35 @@ class Question extends Component {
 			    	}
   				}
 			}(answer, n.getAttribute('data-num')));
-			
+
 		}
 	}
 
 	render() {
 		if(this.state.type === "选择") {
-			return( 
-				<div className="question-box" styleName="container">
-					<div className="question-main" styleName="main">
-						<p className="question-text" styleName='question'>
+			return(
+				<div className={style.container}>
+					<div className={style.main}>
+						<p className={style.question}>
 							{this.state.order + '.' + this.state.question}
 						</p>
-						<img className="question-image" alt={this.state.questionImages} src={this.state.questionImages} styleName="image"/>
+						<img alt={this.state.questionImages} src={this.state.questionImages} className={style.image}/>
 						<Options key="options" order={this.state.order} type={this.state.options.type} list={this.state.options.list} onClick={this.checked}/>
-						<button className='submit' onClick={this.submit} styleName='button'>确认提交</button> 
+						<button className={style.button} onClick={this.submit}>确认提交</button>
 					</div>
 				</div>
 			)
 		}
 		else if (this.state.type === "简答") {
 			return(
-				<div className="question-box" styleName="container">
-					<div className="question-main" styleName="main">
-						<p className="question-text" styleName='question'>
+				<div  className={style.container}>
+					<div  className={style.main}>
+						<p  className={style.question}>
 							{this.state.order + '.' + this.state.question}
 						</p>
-						<img className="question-image" alt={this.state.questionImages} src={this.state.questionImages} styleName="image"/>
-						<textarea cols='46' rows='10' styleName="text" id="text" className={style.textarea}></textarea>
-						<button className='submit' onClick={this.submit} styleName='button'>确认提交</button> 
+						<img  alt={this.state.questionImages} src={this.state.questionImages} className={style.image}/>
+						<textarea id="text" className={style.textarea}></textarea>
+						<button  onClick={this.submit} className={style.button}>确认提交</button>
 					</div>
 				</div>
 			)

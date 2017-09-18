@@ -41,3 +41,13 @@
 	padding: 0.1rem;
 	font-size: 1rem;
 }
+
+@media screen and (min-width: 800px) {
+	.ul {
+		color: inherit;
+	}
+
+	.label {
+		color:  inherit;
+	}
+}

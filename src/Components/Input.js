@@ -17,7 +17,6 @@ class Input extends Component {
 
 	handleChange(event) {
 		let name = this.props.name;
-		console.log(name);
 		let inputValue = event.target.value;
 		let value = '';
 		
@@ -163,30 +162,30 @@ class Input extends Component {
 				}
 
 				break;
-			case "phoneNumber": 
-				let Reg5 = new RegExp(/^1[3|4|5|8][0-9]\d{4,8}$/);
+			// case "phoneNumber": 
+			// 	let Reg5 = new RegExp(/^1[3|4|5|8][0-9]\d{4,8}$/);
 
-				if(Reg5.test(inputValue)) {
-					newState = {
-						valid: true,
-						value: inputValue,
-						error: ''
-					}
-				} else if(inputValue === "") {
-					newState = {
-						valid: false,
-						value: '',
-						error: "手机号不能为空"
-					}
-				} else {
-					newState = {
-						valid: false,
-						value: '',
-						error: '手机号码不正确'
-					}
-				}
+			// 	if(Reg5.test(inputValue)) {
+			// 		newState = {
+			// 			valid: true,
+			// 			value: inputValue,
+			// 			error: ''
+			// 		}
+			// 	} else if(inputValue === "") {
+			// 		newState = {
+			// 			valid: false,
+			// 			value: '',
+			// 			error: "手机号不能为空"
+			// 		}
+			// 	} else {
+			// 		newState = {
+			// 			valid: false,
+			// 			value: '',
+			// 			error: '手机号码不正确'
+			// 		}
+			// 	}
 
-				break;
+			// 	break;
 			case "captcha": 
 				if(inputValue === "") {
 					newState = {
@@ -210,7 +209,7 @@ class Input extends Component {
 
 	render() {
 		return (
-			<label className={this.props.labelstyle || style.label}>
+			<label className={style[this.props.labelStyle] || style.label}>
 				<input placeholder={this.props.label} type={this.props.type} className={style[this.props.className] || style.input} id={this.props.id} name={this.props.name} onBlur={this.handleChange} />
 		    	<span className={style.error}>{this.state.error}</span>
 			</label>

@@ -10,8 +10,8 @@
 	text-align: start;
 }
 
-.question {
-	
+.ul {
+	padding: 0px;
 }
 
 .option {
@@ -24,18 +24,9 @@
 	text-align: center;
 }
 
-.text {
-	display: block;
-	margin: 0 auto;
-	outline: none;
-	resize: none;
-	border: 1px solid #adadad;
-
-}
-
 .button {
 	display: block;
-	width: 300px;
+	width: 100%;
 	height:  2.5rem;
 	border:  none;
 	outline: none;
@@ -74,6 +65,18 @@
 	vertical-align: top;
 }
 
+.textarea {
+	width: 100%;
+	height: 20vh;
+	padding: 0.5em;
+	font-size: 16px;
+	display: block;
+	margin: 0 auto;
+	outline: none;
+	resize: none;
+	border: 1px solid #adadad;
+}
+
 @media screen and (min-width: 800px) {
 	.container {
 		position: absolute;
@@ -89,7 +92,7 @@
 		width: 800px;
 		height: 500px;
 		background: #fff;
-		margin: 50px auto 100px;
+		margin: 50px auto 0px;
 		border-radius: 15px;
 		font-size: 16px;
 		box-sizing: border-box;
@@ -108,6 +111,7 @@
 	.ul {
 		width: 100%;
 		margin: 0 auto;
+		padding: 0px;
 	}
 
 	.text_li:hover {
@@ -119,6 +123,10 @@
 		width: 100%;
 		padding: 0.5em;
 		font-size: 16px;
+	}
+
+	.button {
+		width: 300px;
 	}
 
 }

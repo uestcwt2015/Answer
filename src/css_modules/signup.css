@@ -1,11 +1,18 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
 .form {
 	width: 500px;
 	margin: 100px auto;
+	text-align: center;
 }
 
 .form2 {
 	width: 500px;
 	margin: 50px auto;
+	text-align: center;
 }
 
 .label {
@@ -22,7 +29,7 @@
 }
 
 .img {
-	margin-left: 20px;
+	margin-left: 30px;
     vertical-align: top;
     margin-top: 2rem;
 }
@@ -38,21 +45,29 @@
 	color: white;
 	font-size: 20px;
 	line-height: 40px;
+	text-align: center;
 }
 
 .button:hover {
 	background: #0675cb;
 }
 
+.select {
+	display: block;
+	width: 60%;
+	margin: 0 auto;
+	height: 1.6rem;
+	font-size: 1rem;
+	line-height: 1.6rem;
+	outline: none;
+	margin-top: 2rem;
+	background: #ffffff;
+}
 
 @media screen and (max-width: 800px) {
 	.main1 {
-		position: absolute;
-		top:  0px;
-		left: 0px;
-		bottom: 0px;
-		right: 0px;
-		padding-bottom: 3rem;
+		width: 100vw;
+		height: 100vh;
 		background-image: url('../images/bg2.jpg');
 		background-color: black;
 		background-size: cover;
@@ -61,7 +76,8 @@
 	}
 
 	.main2 {
-		padding-bottom: 3rem;
+		width: 100vw;
+		padding-bottom: 40px;
 		background-image: url('../images/bg2.jpg');
 		background-color: black;
 		background-size: cover;
@@ -77,10 +93,14 @@
 		text-align: center;
 	}
 
+	.select {
+		background: #fcfcfc;
+	}
+
 	.form2 {
 		width: 100%;
 		position: relative;
-		top: 10%;
+		top: 5%;
 		margin: 0 auto;
 		text-align: center;
 	}
@@ -93,12 +113,12 @@
 		background: #00BC9B;
 		outline: none;
 		margin-top: 2rem;
-	}
-
-	.link {
 		color: #fcfcfc;
 		font-size: 1rem;
 		line-height: 2.5rem;
-		text-decoration: 
+	}
+
+	.img {
+		margin-left: 10px;
 	}
 }

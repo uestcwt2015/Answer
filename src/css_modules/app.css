@@ -37,6 +37,9 @@
 	border-radius: 15px;
 	font-size: 18px;
 	margin-left: -150px;
+	color:  #fff;
+	line-height: 2rem;
+	font-size: 1rem;
 }
 
 .login_button {
@@ -53,6 +56,9 @@
 	border-radius: 15px;
 	font-size: 18px;
 	margin-left: 50px;
+	color:  #fff;
+	line-height: 2rem;
+	font-size: 1rem;
 }
 
 .login_button:hover, .signup_button:hover {
@@ -71,15 +77,8 @@
 		background-image: url('../images/bg.jpg');
 		background-size: cover;
 		background-repeat: no-repeat;
-		background-position: 0px -50px;
+		background-position: 0px -100px;
 		background-attachment: fixed;
-	}
-
-	.link {
-		color:  #b6b1b4;
-		text-decoration: none;
-		line-height: 2rem;
-		font-size: 1rem;
 	}
 
 	.signup_button {
@@ -90,6 +89,7 @@
 		top:  65%;
 		left: 50%;
 		margin-left: -60px;
+		color:  #b6b1b4;
 		border: 1px solid #b6b1b4;
 		border-radius: 15px;
 	}
@@ -101,6 +101,7 @@
 		background: none;
 		top:  72%;
 		left: 50%;
+		color: #b6b1b4;
 		margin-left: -60px;
 		border: 1px solid #b6b1b4;
 		border-radius: 15px;

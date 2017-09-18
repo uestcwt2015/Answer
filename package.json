@@ -2,6 +2,7 @@
   "name": "answer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://exam.stuhome.com/testing/",
   "dependencies": {
     "es6-promise": "^4.1.1",
     "fetch-mock": "^5.12.2",

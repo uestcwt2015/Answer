@@ -11,7 +11,7 @@ class StepOne extends Component {
 		super(props);
 
 		this.state = {
-			imgUrl: 'http://jcuan.org/user/captcha/'
+			imgUrl: 'http://exam.stuhome.com/user/captcha/'
 		}
 
 		this.changeImage = this.changeImage.bind(this);
@@ -28,12 +28,12 @@ class StepOne extends Component {
 			<div className={style.main1}>
 				<form className={style.form}>
 					<Input label="学号" type="text" name="studentId" id="studentNumber" key="studentNumber"/>
-					<Input label="密码" type="password" name="password" id="password" key="password"/>
+					<Input label="信息门户密码" type="password" name="password" id="password" key="password"/>
 					<p className={style.p}>
-						<Input label="验证码" type="text" name="captcha" id='captcha' key="captcha" className="captche" labelstyle={style.label}/>
+						<Input label="验证码" type="text" name="captcha" id='captcha' key="captcha" className="captche" labelStyle="captche_label"/>
 						<img src={this.state.imgUrl} onClick={this.changeImage} className={style.img}/>
 					</p>
-					<Button href="/signup/stepTwo" submit={true} url={'http://jcuan.org/user/registerOne'} className={style.button} linkStyle={style.link}>下一步</Button>
+					<Button href="/signup/stepTwo" submit={true} url={'http://exam.stuhome.com/user/registerOne'} className={style.button} >下一步</Button>
 				</form>
 			</div>
 		)

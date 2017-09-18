@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, hashHistory} from 'react-router';
+import {hashHistory} from 'react-router';
 import 'whatwg-fetch';
 import 'es6-promise';
 
@@ -30,22 +30,24 @@ class Button extends Component {
 				}
 			}
 		}
+		
+		let select = document.getElementsByTagName('select')[0];
 
+		if(select) {
+			submitData[select.name.toString()] = select.value;
+		}
+		
 		let keys = Object.keys(submitData);
 		for(let i = 0; i < keys.length; i++) {
 			dataHasFull = true;
+
 			if(submitData[keys[i]] === "") {
 				dataHasFull = false;
 			}
 		}
 
-		if(!dataHasFull) {
-			e.preventDefault();
-		}
-
-
 		let formData = new FormData();
-	
+
 		formData.append("data", JSON.stringify(submitData));
 
 		fetch(this.props.url,{
@@ -56,8 +58,9 @@ class Button extends Component {
 		.then((res) => {return res.json()})
 		.then((data) => {
 			if(data.errorCode === 0) {
-				hashHistory.push(this.props.href);
-				
+				if(dataHasFull) {
+					hashHistory.push(this.props.href);
+				}
 			} else {
 				alert(data.errorMsg);
 			}
@@ -66,8 +69,8 @@ class Button extends Component {
 
 	render() {
 		return(
-			<span className={this.props.className} style={this.props.style}>
-				<Link className={this.props.linkStyle} onClick={this.props.submit ? this.handleSubmit : ()=>{console.log(this.props.href);hashHistory.push(this.props.href)}}>{this.props.children}</Link>
+			<span className={this.props.className} style={this.props.style} onClick={this.props.submit ? this.handleSubmit : ()=>{hashHistory.push(this.props.href)}}>
+				{this.props.children}
 			</span>
 		)
 	}

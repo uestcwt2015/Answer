@@ -30,13 +30,13 @@ class QuestionPage extends Component {
 				}
 			}
 		}
-		
-		xhr.open('GET', 'http://jcuan.org/exam/status');
+
+		xhr.open('GET', 'http://exam.stuhome.com/exam/status');
 
 		xhr.send(null);
 
 	}
-	
+
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.params.splat) {
 			this.setState(getOrder());
@@ -47,25 +47,25 @@ class QuestionPage extends Component {
 		return (
 			<div>
 				<WrapTop text={"第" + this.state.order + "题"} needLogined={true}/>
-				<Question order={this.state.order} />
+				<Question order={this.state.order} num={this.state.num} />
 				<WrapBottom>
 					<div className="buttons-box">
 						<StepButton key="prev-button"
-								className={style.button} 
+								className={style.button}
 								href={!this.state.position.first ? "/questionlist/" + String(this.state.prevOrder) : "/questionlist/"}
 								linkStyle={style.link}
 						>
 							上一题
 						</StepButton>
-						<StepButton key="back-list" 
-								className={style.button} 
+						<StepButton key="back-list"
+								className={style.button}
 								href="/questionlist"
 								linkStyle={style.link}
 						>
 							返回目录
 						</StepButton>
 						<StepButton key="next-button"
-								className={style.button} 
+								className={style.button}
 								href={!this.state.position.last ? "/questionlist/" + String(this.state.nextOrder) : "/questionlist/"}
 								linkStyle={style.link}
 						>
@@ -106,6 +106,7 @@ function getOrder(num) {
 	}
 
 	return {
+		num: stableNum,
 		order: parseInt(o, 10),
 		prevOrder: parseInt(o, 10) - 1,
 		nextOrder: parseInt(o, 10) + 1,

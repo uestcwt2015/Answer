@@ -12,7 +12,7 @@ import 'es6-promise';
 class List extends Component {
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			detail: {}
 		}
@@ -20,7 +20,7 @@ class List extends Component {
 		this.check = this.check.bind(this);
 	}
 
-	
+
     check(e) {
     	let details = this.state.detail;
 		for(let i = 0; i < details.length; i++) {
@@ -29,9 +29,9 @@ class List extends Component {
 			}
 		}
 	}
-	
+
 	sureSubmit() {
-		fetch('http://jcuan.org/exam/submitExam', {
+		fetch('http://exam.stuhome.com/exam/submitExam', {
 			credentials: 'include',
 			method: 'POST',
 			body:JSON.stringify({})
@@ -54,18 +54,29 @@ class List extends Component {
 				if((xhr.status >= 200 && xhr.status <= 300) || xhr.status === 304) {
 					let res = JSON.parse(xhr.responseText);
 					if(res.errorCode === 0) {
-						this.setState({detail: res.detail})
+						this.setState({detail: res.detail});
+						if(res.finished === true) {
+							hashHistory.push('achieve');
+						}
 					} else {
 						alert(res.errorMsg);
 					}
 				}
 			}
 		}
-		
-		xhr.open('GET', 'http://jcuan.org/exam/status', true);
 
+		xhr.open('GET', 'http://exam.stuhome.com/exam/status');
 		xhr.send(null);
 	}
+
+	// shouldComponentUpdate(nextProps, nextState) {
+	//     // if(this.state !== nextState) {
+	//     // 	window.location.onload();
+	//     // }
+	//     console.log(nextState);
+	//     console.log(this.state);
+	//     return true;
+	// }
 
 	render() {
 		return (

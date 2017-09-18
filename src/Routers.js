@@ -15,7 +15,8 @@ const history = hashHistory;
 
 const Routes = () => (
 	<Router history={history}>
-		<Route path="/" component={App}>
+		<Route path="/">
+			<IndexRoute component={App} />
 			<Route path="achieve">
 				<IndexRoute component={Achieve} />
 			</Route>

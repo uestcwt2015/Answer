@@ -36,7 +36,7 @@ class Select extends Component {
 			<div>
 				<p className={style.label}>{this.props.label + '(最多选择两项)'} </p>
 				<ul name={this.props.name} id={this.props.id} className={style.ul}>
-					<p styleName='error'>{this.state.error}</p>
+					<p className={style.error}>{this.state.error}</p>
 					{
 						this.props.arr.map((a, i) => {
 							return (
