@@ -1,0 +1,50 @@
+.container {
+	padding-top: 3rem;
+	width: 90%;
+	margin: auto;
+}
+
+.header {
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1.4rem;
+    color: inherit;
+    font-weight: bold;
+    text-align: center;
+}
+
+.article {
+	width: 100%;
+}
+
+.ol {
+	width: 80%;
+}
+
+.li {
+	width: 100%;
+	line-height: 1.5rem;
+}
+
+.button {
+	display: block;
+	width: 33%;
+	height: 2rem;
+	line-height: 2rem;
+	border-radius: 15px;
+	color: #fff;
+	text-align: center;
+	background: #00bc98;
+	margin:  3rem auto;
+}
+
+@media screen and (min-width: 800px){
+	.button {
+		background: #0391fe;
+	}
+
+	.ol {
+		width: 500px;
+		margin: 40px auto;
+	}
+}

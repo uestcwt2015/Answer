@@ -1,0 +1,139 @@
+.wrap_top {
+	display: block;
+	width: 100%;
+	height:  2.5rem;
+	background: #3d444c;
+	font-size: 1rem;
+	color: #fff;
+	text-align: center;
+	line-height: 2.5rem;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.wrap_bottom {
+	display: block;
+	width: 100%;
+	height:  2.5rem;
+	background: #3d444c;
+	font-size: 1rem;
+	color:  #fff;
+	text-align: center;
+	line-height: 2.5rem;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+}
+
+.text {
+	display: inline-block;
+	width: 4rem;
+	text-align: center;
+	position: fixed;
+	left: 50%;
+	margin: 0;
+	margin-left: -2rem;
+}
+
+.span {
+	float: right;
+	line-height: 3rem;
+	margin-right: 1rem;
+}
+
+.button {
+	color: #00BC9B;
+	font-size: 0.8rem;
+}
+
+.link {
+ 	color:  #00BC9B;
+ 	font-size:  0.8rem;
+ 	text-decoration: none;
+}
+
+.bottom_link {
+	color: #00BC9B;
+	font-size: 1rem;
+	text-decoration: none;
+}
+
+@media screen and (min-width: 800px) {
+	.wrap_top {
+		display: block;
+		width: 100%;
+		height:  50px;
+		background: black;
+		font-size: 1rem;
+		color: #fff;
+		text-align: center;
+		line-height: 50px;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		box-sizing: border-box;
+		overflow: hidden;
+		clear: both;
+	}
+	
+	.center {
+		width: 800px;
+		height: 50px;
+		margin: 0 auto;
+	}
+
+	.wrap_bottom {
+		display: block;
+		background: black;
+
+	}
+
+	.text {
+		position: static;
+		color: transparent;
+		background-image: url('../images/logo.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;
+		width: 120px;
+		height: 50px;
+		float: left;
+		margin-left: 0px;
+	}
+
+	.button {
+		float: right;
+		width: 80px;
+		height: 30px;
+		outline: none;
+		border: none;
+		border-radius: 15px;
+		color: #ffffff;
+		font-size: 14px;
+		line-height: 30px;
+		background: #00BC9B;
+		margin-top: 10px;
+		margin-right: 10px;
+		outline: none;
+	}
+
+	.link {
+		float: right;
+		width: 80px;
+		height: 30px;
+		outline: none;
+		border: none;
+		border-radius: 15px;
+		color: #ffffff;
+		font-size: 14px;
+		line-height: 30px;
+		background: #FF411C;
+		margin-top: 10px;
+		margin-right: 10px;
+	}
+
+	.bottom_link {
+
+	}
+}

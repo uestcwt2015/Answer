@@ -1,0 +1,53 @@
+.label {
+	font-size: 1.1rem;
+	width: 60%;
+	margin: 1rem auto 0.5rem;
+	vertical-align: top;
+	text-align: left;
+	color: #b6b1b4;
+}
+
+.ul {
+	width: 60%;
+	margin-left: 0.6rem;
+	margin: 0.5rem auto;
+	padding: 0.4rem;
+	text-align: left;
+	color:  #b6b1b4;
+}
+
+.error {
+	width: 60%;
+	display: block;
+	color:  red;
+	font-size: 1rem;
+	transform: scale(0.7);
+	text-align: start;
+	margin: 0;
+	margin-left: -1rem;
+}
+
+.checkbox {
+	line-height: 1.4rem;
+	height: 1.4rem;
+	float: left;
+	margin-right: 0.3em;
+}
+
+.p {
+	text-align: start;
+	line-height: 1.4rem;
+	height: 1.4rem;
+	padding: 0.1rem;
+	font-size: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+	.ul {
+		color: inherit;
+	}
+
+	.label {
+		color:  inherit;
+	}
+}

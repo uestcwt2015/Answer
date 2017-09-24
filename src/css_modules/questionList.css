@@ -1,0 +1,67 @@
+.ul {
+	width: 80%;
+	margin: 3rem auto;
+	padding: 10% 0;
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+}
+
+.button {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 100%;
+	text-align: center;
+	margin:  0.8rem;
+	line-height: 2rem;
+	color: #8c8c8c;
+	border: 1px solid #8c8c8c;
+}
+
+.button_active {
+	display: inline-block;
+	width: 2rem;		
+	height: 2rem;
+	border-radius: 100%;
+	text-align: center;
+	margin:  0.8rem;
+	line-height: 2rem;
+	color: green;
+	border: 1px solid green;
+}
+
+.button:hover {
+	cursor: pointer;
+}
+
+.button_active:hover {
+	cursor: pointer;
+}
+
+@media screen and (min-width: 800px) {
+	.ul {
+		width: 800px;
+		height: 500px;
+		background: #fff;
+		margin: 50px auto 100px;
+		border-radius: 15px;
+		box-sizing: border-box;
+		padding: 30px 40px;
+		text-align: left;
+		display: flex;
+		flex-wrap: wrap;
+		align-content: flex-start;
+	}
+
+	.main {
+		position: absolute;
+		top: 50px;
+		left: 0px;
+		bottom: 0px;
+		right:  0px;
+		background: #eeeeee;
+		overflow: hidden;
+	}
+}
+

@@ -1,0 +1,11 @@
+.link {
+	color: #00BC9B;
+	font-size: 1rem;
+	text-decoration: none;
+}
+
+.button {
+	display: inline-block;
+	width: 33%;
+	text-align: center;
+}
